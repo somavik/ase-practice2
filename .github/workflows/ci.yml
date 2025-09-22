@@ -31,6 +31,7 @@ jobs:
         with:
           path: |
             **/build/distributions/*
+          name: ${{ matrix.os }}
 
   e2e-integration:
     name: E2E Integration test
@@ -53,7 +54,7 @@ jobs:
       - name: Download Distribution
         uses: actions/download-artifact@v4
         with:
-          name: artifact
+          name: ${{ matrix.os }}
           path: artifact
       - name: Extract Distribution
         uses: ihiroky/extract-action@v1
